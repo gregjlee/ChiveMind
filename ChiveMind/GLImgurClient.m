@@ -105,9 +105,11 @@ NSString * const kAuthenticationEndpoint =
         [mutablePropertyValues setValue:[representation valueForKey:@"id"] forKey:@"lineID"];
         [mutablePropertyValues setValue:[representation valueForKey:@"title"] forKey:@"title"];
         [mutablePropertyValues setValue:[representation valueForKey:@"link"] forKey:@"imageURL"];
+        [mutablePropertyValues setValue:[representation valueForKey:@"cover"] forKey:@"coverID"];
         
         [mutablePropertyValues setValue:[NSNumber numberWithBool:[[representation valueForKey:@"is_album"] boolValue]] forKey:@"isAlbum"];
         [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"score"] integerValue]] forKey:@"score"];
+        [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"images_count"] integerValue]] forKey:@"count"];
         [mutablePropertyValues setValue:[representation valueForKey:@"section"] forKey:@"section"];
     }
 //    else if ([entity.name isEqualToString:@"User"]) {
@@ -158,5 +160,47 @@ NSString * const kAuthenticationEndpoint =
                                   }];
     
 }
++ (void)getEndPoint:(NSString *)endPoint{
+//    NSString *AlbumEndpoint = [NSString stringWithFormat:@"album/%@/images",albumID];
+    [[self sharedClient] getPath:endPoint
+                      parameters:nil
+                         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                             
+                             NSArray* data = [responseObject objectForKey:@"data"];
+                             if (data) {
+                                 NSLog(@"endpoint %@",data);
+                             }
+                             else{
+                                 NSLog(@"null data");
+                             }
+                             
+                         }
+                         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                             NSLog(@"error: %@", error.localizedDescription);
+                             
+                         }];
+    
+}
+
+/*
+ "account_url" = Demmayyy;
+ cover = HVdde4H;
+ datetime = 1372434815;
+ description = "<null>";
+ downs = 109;
+ favorite = 0;
+ id = buFHd;
+ "is_album" = 1;
+ layout = blog;
+ link = "http://imgur.com/a/buFHd";
+ nsfw = 0;
+ privacy = public;
+ score = 3231;
+ section = funny;
+ title = "I will win this battle for men everywhere.";
+ ups = 3340;
+ views = 534;
+ vote = "<null>";
+ */
 
 @end

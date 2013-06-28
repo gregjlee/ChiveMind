@@ -38,8 +38,10 @@
 		C11E493A177D7FDA009BFD66 /* TTTImageTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E4935177D7FDA009BFD66 /* TTTImageTransformers.m */; };
 		C11E493B177D7FDA009BFD66 /* TTTStringTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E4937177D7FDA009BFD66 /* TTTStringTransformers.m */; };
 		C11E494C177D822D009BFD66 /* GLImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E494B177D822D009BFD66 /* GLImgurClient.m */; };
-		C11E4952177D8FD6009BFD66 /* LineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E4951177D8FD6009BFD66 /* LineImage.m */; };
 		C11E4958177D90F8009BFD66 /* ChiveMindIncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E4957177D90F8009BFD66 /* ChiveMindIncrementalStore.m */; };
+		C145BB25177E3A7B00E77372 /* GalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB24177E3A7B00E77372 /* GalleryViewCell.m */; };
+		C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C145BB26177E3B0600E77372 /* GalleryViewCell.xib */; };
+		C145BB2D177E42A800E77372 /* LineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB2C177E42A800E77372 /* LineImage.m */; };
 		C1F69E7F177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F69E64177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m */; };
 		C1F69E80177DF2FA007E64A7 /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F69E66177DF2FA007E64A7 /* PSTCollectionView.m */; };
 		C1F69E81177DF2FA007E64A7 /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F69E68177DF2FA007E64A7 /* PSTCollectionViewCell.m */; };
@@ -121,10 +123,13 @@
 		C11E4937177D7FDA009BFD66 /* TTTStringTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTStringTransformers.m; sourceTree = "<group>"; };
 		C11E494A177D822C009BFD66 /* GLImgurClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLImgurClient.h; sourceTree = "<group>"; };
 		C11E494B177D822D009BFD66 /* GLImgurClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLImgurClient.m; sourceTree = "<group>"; };
-		C11E4950177D8FD6009BFD66 /* LineImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineImage.h; sourceTree = "<group>"; };
-		C11E4951177D8FD6009BFD66 /* LineImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineImage.m; sourceTree = "<group>"; };
 		C11E4956177D90F8009BFD66 /* ChiveMindIncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChiveMindIncrementalStore.h; sourceTree = "<group>"; };
 		C11E4957177D90F8009BFD66 /* ChiveMindIncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChiveMindIncrementalStore.m; sourceTree = "<group>"; };
+		C145BB23177E3A7B00E77372 /* GalleryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewCell.h; sourceTree = "<group>"; };
+		C145BB24177E3A7B00E77372 /* GalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewCell.m; sourceTree = "<group>"; };
+		C145BB26177E3B0600E77372 /* GalleryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewCell.xib; sourceTree = "<group>"; };
+		C145BB2B177E42A800E77372 /* LineImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineImage.h; sourceTree = "<group>"; };
+		C145BB2C177E42A800E77372 /* LineImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineImage.m; sourceTree = "<group>"; };
 		C1F69E63177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+PSTCollectionViewAdditions.h"; sourceTree = "<group>"; };
 		C1F69E64177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+PSTCollectionViewAdditions.m"; sourceTree = "<group>"; };
 		C1F69E65177DF2FA007E64A7 /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionView.h; sourceTree = "<group>"; };
@@ -320,8 +325,8 @@
 			isa = PBXGroup;
 			children = (
 				C11E48F6177D7DD1009BFD66 /* ChiveMind.xcdatamodeld */,
-				C11E4950177D8FD6009BFD66 /* LineImage.h */,
-				C11E4951177D8FD6009BFD66 /* LineImage.m */,
+				C145BB2B177E42A800E77372 /* LineImage.h */,
+				C145BB2C177E42A800E77372 /* LineImage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -387,6 +392,9 @@
 				C1F69E98177DFD15007E64A7 /* AlbumViewLayout.m */,
 				C1F69E9D177E035F007E64A7 /* AlbumViewCell.h */,
 				C1F69E9E177E035F007E64A7 /* AlbumViewCell.m */,
+				C145BB23177E3A7B00E77372 /* GalleryViewCell.h */,
+				C145BB24177E3A7B00E77372 /* GalleryViewCell.m */,
+				C145BB26177E3B0600E77372 /* GalleryViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -461,6 +469,7 @@
 				C11E4904177D7DD1009BFD66 /* DetailViewController.xib in Resources */,
 				C1F69E90177DF420007E64A7 /* AlbumViewController.xib in Resources */,
 				C1F69EA7177E1FB4007E64A7 /* ImageViewController.xib in Resources */,
+				C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +501,6 @@
 				C11E493A177D7FDA009BFD66 /* TTTImageTransformers.m in Sources */,
 				C11E493B177D7FDA009BFD66 /* TTTStringTransformers.m in Sources */,
 				C11E494C177D822D009BFD66 /* GLImgurClient.m in Sources */,
-				C11E4952177D8FD6009BFD66 /* LineImage.m in Sources */,
 				C11E4958177D90F8009BFD66 /* ChiveMindIncrementalStore.m in Sources */,
 				C1F69E7F177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				C1F69E80177DF2FA007E64A7 /* PSTCollectionView.m in Sources */,
@@ -514,6 +522,8 @@
 				C1F69EA6177E1FB4007E64A7 /* ImageViewController.m in Sources */,
 				C1F69EAD177E2733007E64A7 /* NSString+InflectorKit.m in Sources */,
 				C1F69EAE177E2733007E64A7 /* TTTStringInflector.m in Sources */,
+				C145BB25177E3A7B00E77372 /* GalleryViewCell.m in Sources */,
+				C145BB2D177E42A800E77372 /* LineImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

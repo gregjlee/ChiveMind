@@ -11,6 +11,8 @@
 #import "DetailViewController.h"
 #import "AlbumViewController.h"
 #import "GLImgurClient.h"
+#import "GalleryViewCell.h"
+
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -21,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Master", @"Master");
+        self.title = @"ChiveMind";
     }
     return self;
 }
@@ -31,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"LineImage"];
     fetchRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"lineID" ascending:NO]];
@@ -40,6 +43,7 @@
     [self refetchData];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refetchData)];
+    [GLImgurClient getEndPoint:@"gallery/hot/viral/0"];
     
 }
 
@@ -51,7 +55,9 @@
 
 
 #pragma mark - Table View
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [[self.fetchedResultsController sections] count];
@@ -68,14 +74,31 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GalleryViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"GalleryViewCell" owner:nil options:nil];
+        
+        for(id currentObject in topLevelObjects)
+        {
+            if([currentObject isKindOfClass:[GalleryViewCell class]])
+            {
+                cell = (GalleryViewCell *)currentObject;
+                break;
+            }
+        }
     }
-
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+- (void)configureCell:(GalleryViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    LineImage *lineImage = (LineImage*)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.titleLabel.text = lineImage.title;
+    cell.detailLabel.text=lineImage.section;
+    cell.scoreLabel.text=[NSString stringWithFormat:@"%d pts", [lineImage.score integerValue]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:lineImage.imageURL] ];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,10 +168,5 @@
 }
  */
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    LineImage *lineImage = (LineImage*)[self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = lineImage.title;
-}
 
 @end

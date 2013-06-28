@@ -11,11 +11,13 @@
 
 @implementation LineImage
 
-@dynamic lineID;
-@dynamic title;
 @dynamic imageURL;
 @dynamic isAlbum;
+@dynamic lineID;
 @dynamic score;
 @dynamic section;
+@dynamic title;
+@dynamic coverID;
+@dynamic count;
 
 @end

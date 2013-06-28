@@ -25,4 +25,5 @@ extern NSString * const kAuthenticationEndpoint;
 - (id)initWithBaseURL:(NSURL *)url;
 + (void)getAlbumWithId:(NSString*)albumID
                  block:(void (^)(NSArray *records))block;
++ (void)getEndPoint:(NSString *)endPoint;
 @end
