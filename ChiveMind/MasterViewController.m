@@ -12,6 +12,7 @@
 #import "AlbumViewController.h"
 #import "GLImgurClient.h"
 #import "GalleryViewCell.h"
+#import "NSURL+imgur.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -43,7 +44,7 @@
     [self refetchData];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refetchData)];
-    [GLImgurClient getEndPoint:@"gallery/hot/viral/0"];
+    [GLImgurClient getEndPoint:@"image/nFlnmH1"];
     
 }
 
@@ -98,7 +99,20 @@
     cell.titleLabel.text = lineImage.title;
     cell.detailLabel.text=lineImage.section;
     cell.scoreLabel.text=[NSString stringWithFormat:@"%d pts", [lineImage.score integerValue]];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:lineImage.imageURL] ];
+    UIImage *placeHolderImage=[UIImage imageNamed:@"albumPlaceHolder.jpeg"];
+    if ([lineImage.isAlbum boolValue]) {
+        cell.countLabel.text=[NSString stringWithFormat:@"%d picts", [lineImage.count integerValue]];
+        [GLImgurClient getImageWithId:lineImage.coverID block:^(NSArray *results) {
+            NSLog(@"cover results %@",results);
+            NSDictionary *imageData = (NSDictionary *)results;
+            [cell.imageView setImageWithURL: [NSURL urlWithImageData:imageData size:@"s"] placeholderImage:placeHolderImage];
+        }];
+    }
+    else{
+        cell.countLabel.hidden=YES;
+        [cell.imageView setImageWithURL: [NSURL urlFromLineImage:lineImage size:@"s"] placeholderImage:placeHolderImage];
+    }
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

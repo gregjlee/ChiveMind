@@ -134,33 +134,25 @@ NSString * const kAuthenticationEndpoint =
     return NO;
 }
 #pragma mark album
-+ (void)getAlbumWithId:(NSString*)albumID
-                 block:(void (^)(NSArray *records))block{
-    NSString *AlbumEndpoint = [NSString stringWithFormat:@"album/%@/images",albumID];
-    [[self sharedClient] getPath:AlbumEndpoint
-                               parameters:nil
-                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                      
-                                      NSArray* data = [responseObject objectForKey:@"data"];
-                                      if (data) {
-                                          
-                                      }
-                                      else{
-                                          NSLog(@"null data");
-                                      }
-                                      if (block) {
-                                          block(data);
-                                      }
-                                  }
-                                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                      NSLog(@"error: %@", error.localizedDescription);
-                                      if (block) {
-                                          block([NSArray array]);
-                                      }
-                                  }];
++ (void)getImageWithId:(NSString*)imageID
+                 block:(void (^)(NSArray  *results))block{
+    NSString *imageEndPoint = [NSString stringWithFormat:@"image/%@",imageID];
+    [self getEndPoint:imageEndPoint block:block];
     
 }
-+ (void)getEndPoint:(NSString *)endPoint{
+
++ (void)getAlbumWithId:(NSString*)albumID
+                 block:(void (^)(NSArray *records))block{
+    NSString *imageEndPoint = [NSString stringWithFormat:@"gallery/album/%@",albumID];
+    [self getEndPoint:imageEndPoint block:block];
+}
++ (void)getAlbumImagesWithId:(NSString*)albumID
+                 block:(void (^)(NSArray *records))block{
+    NSString *imageEndPoint = [NSString stringWithFormat:@"gallery/album/%@/images",albumID];
+    [self getEndPoint:imageEndPoint block:block];
+}
+
++ (void)getEndPoint:(NSString *)endPoint block:(void (^)(NSArray  *results))block{
 //    NSString *AlbumEndpoint = [NSString stringWithFormat:@"album/%@/images",albumID];
     [[self sharedClient] getPath:endPoint
                       parameters:nil
@@ -169,6 +161,9 @@ NSString * const kAuthenticationEndpoint =
                              NSArray* data = [responseObject objectForKey:@"data"];
                              if (data) {
                                  NSLog(@"endpoint %@",data);
+                                 if (block) {
+                                     block(data);
+                                 }
                              }
                              else{
                                  NSLog(@"null data");
@@ -180,6 +175,10 @@ NSString * const kAuthenticationEndpoint =
                              
                          }];
     
+}
+
++ (void)getEndPoint:(NSString *)endPoint{
+    [self getEndPoint:endPoint block:nil];
 }
 
 /*

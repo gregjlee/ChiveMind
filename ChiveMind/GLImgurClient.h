@@ -23,7 +23,11 @@ extern NSString * const kAuthenticationEndpoint;
 @interface GLImgurClient : AFRESTClient <AFIncrementalStoreHTTPClient>
 + (GLImgurClient *)sharedClient;
 - (id)initWithBaseURL:(NSURL *)url;
++ (void)getImageWithId:(NSString*)imageID
+                 block:(void (^)(NSArray  *results))block;
 + (void)getAlbumWithId:(NSString*)albumID
+                 block:(void (^)(NSArray *records))block;
++ (void)getAlbumImagesWithId:(NSString*)albumID
                  block:(void (^)(NSArray *records))block;
 + (void)getEndPoint:(NSString *)endPoint;
 @end

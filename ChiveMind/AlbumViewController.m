@@ -37,7 +37,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 -(void)loadImages{
-    [GLImgurClient getAlbumWithId:_lineImage.lineID block:^(NSArray *records) {
+    [GLImgurClient getAlbumImagesWithId:_lineImage.lineID block:^(NSArray *records) {
         _imagesData=records;
         NSLog(@"image data %@",_imagesData);
         [self configureCollectionView];

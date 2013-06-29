@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class LineImage;
 @interface NSURL (imgur)
 +(NSURL*)urlWithImageData:(NSDictionary *)imageData size:(NSString *)size;
++(NSURL*)urlFromLineImage:(LineImage*)lineImage size:(NSString *)size;
 @end

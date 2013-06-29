@@ -42,6 +42,7 @@
 		C145BB25177E3A7B00E77372 /* GalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB24177E3A7B00E77372 /* GalleryViewCell.m */; };
 		C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C145BB26177E3B0600E77372 /* GalleryViewCell.xib */; };
 		C145BB2D177E42A800E77372 /* LineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB2C177E42A800E77372 /* LineImage.m */; };
+		C145BB2F177E642900E77372 /* albumPlaceHolder.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C145BB2E177E642900E77372 /* albumPlaceHolder.jpeg */; };
 		C1F69E7F177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F69E64177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m */; };
 		C1F69E80177DF2FA007E64A7 /* PSTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F69E66177DF2FA007E64A7 /* PSTCollectionView.m */; };
 		C1F69E81177DF2FA007E64A7 /* PSTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F69E68177DF2FA007E64A7 /* PSTCollectionViewCell.m */; };
@@ -130,6 +131,7 @@
 		C145BB26177E3B0600E77372 /* GalleryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewCell.xib; sourceTree = "<group>"; };
 		C145BB2B177E42A800E77372 /* LineImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineImage.h; sourceTree = "<group>"; };
 		C145BB2C177E42A800E77372 /* LineImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineImage.m; sourceTree = "<group>"; };
+		C145BB2E177E642900E77372 /* albumPlaceHolder.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = albumPlaceHolder.jpeg; sourceTree = "<group>"; };
 		C1F69E63177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+PSTCollectionViewAdditions.h"; sourceTree = "<group>"; };
 		C1F69E64177DF2FA007E64A7 /* NSIndexPath+PSTCollectionViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+PSTCollectionViewAdditions.m"; sourceTree = "<group>"; };
 		C1F69E65177DF2FA007E64A7 /* PSTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTCollectionView.h; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		C11E48E5177D7DD1009BFD66 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C145BB2E177E642900E77372 /* albumPlaceHolder.jpeg */,
 				C11E48E6177D7DD1009BFD66 /* ChiveMind-Info.plist */,
 				C11E48E7177D7DD1009BFD66 /* InfoPlist.strings */,
 				C11E48EA177D7DD1009BFD66 /* main.m */,
@@ -470,6 +473,7 @@
 				C1F69E90177DF420007E64A7 /* AlbumViewController.xib in Resources */,
 				C1F69EA7177E1FB4007E64A7 /* ImageViewController.xib in Resources */,
 				C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */,
+				C145BB2F177E642900E77372 /* albumPlaceHolder.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
