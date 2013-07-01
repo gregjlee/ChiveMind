@@ -19,6 +19,5 @@
 @property (nonatomic, retain) NSString * section;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * coverID;
-@property (nonatomic, retain) NSNumber * count;
 
 @end

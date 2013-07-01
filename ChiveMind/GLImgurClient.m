@@ -8,7 +8,7 @@
 
 #import "GLImgurClient.h"
 #import "TTTDateTransformers.h"
-
+#import "LineImage.h"
 #import "AFJSONRequestOperation.h"
 NSString * const kImgurBaseURLString = @"https://api.imgur.com/3/";
 #warning Include your client id from instagr.am
@@ -109,7 +109,7 @@ NSString * const kAuthenticationEndpoint =
         
         [mutablePropertyValues setValue:[NSNumber numberWithBool:[[representation valueForKey:@"is_album"] boolValue]] forKey:@"isAlbum"];
         [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"score"] integerValue]] forKey:@"score"];
-        [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"images_count"] integerValue]] forKey:@"count"];
+        
         [mutablePropertyValues setValue:[representation valueForKey:@"section"] forKey:@"section"];
     }
 //    else if ([entity.name isEqualToString:@"User"]) {
@@ -143,12 +143,17 @@ NSString * const kAuthenticationEndpoint =
 
 + (void)getAlbumWithId:(NSString*)albumID
                  block:(void (^)(NSArray *records))block{
-    NSString *imageEndPoint = [NSString stringWithFormat:@"gallery/album/%@",albumID];
+    NSString *imageEndPoint = [NSString stringWithFormat:@"album/%@",albumID];
     [self getEndPoint:imageEndPoint block:block];
 }
 + (void)getAlbumImagesWithId:(NSString*)albumID
                  block:(void (^)(NSArray *records))block{
     NSString *imageEndPoint = [NSString stringWithFormat:@"gallery/album/%@/images",albumID];
+    [self getEndPoint:imageEndPoint block:block];
+}
++ (void)getAlbumCoverWithLineImage:(LineImage *)lineImage
+                 block:(void (^)(NSArray *records))block{
+    NSString *imageEndPoint = [NSString stringWithFormat:@"album/%@/image/%@",lineImage.lineID,lineImage.coverID];
     [self getEndPoint:imageEndPoint block:block];
 }
 
@@ -157,10 +162,8 @@ NSString * const kAuthenticationEndpoint =
     [[self sharedClient] getPath:endPoint
                       parameters:nil
                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                             
                              NSArray* data = [responseObject objectForKey:@"data"];
                              if (data) {
-                                 NSLog(@"endpoint %@",data);
                                  if (block) {
                                      block(data);
                                  }
@@ -168,7 +171,6 @@ NSString * const kAuthenticationEndpoint =
                              else{
                                  NSLog(@"null data");
                              }
-                             
                          }
                          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                              NSLog(@"error: %@", error.localizedDescription);
@@ -178,7 +180,9 @@ NSString * const kAuthenticationEndpoint =
 }
 
 + (void)getEndPoint:(NSString *)endPoint{
-    [self getEndPoint:endPoint block:nil];
+    [self getEndPoint:endPoint block:^(NSArray *results) {
+        NSLog(@"get endpt %@",results);
+    }];
 }
 
 /*

@@ -18,6 +18,5 @@
 @dynamic section;
 @dynamic title;
 @dynamic coverID;
-@dynamic count;
 
 @end

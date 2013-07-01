@@ -14,9 +14,10 @@
     if (!size) {
         size=@"";
     }
-    NSArray* split = [imageData[@"type"] componentsSeparatedByString: @"/"];
+    NSArray* split = [imageData[@"link"] componentsSeparatedByString: @"."];
     NSString *type = [split lastObject];
     NSString *link=[NSString stringWithFormat:@"http://i.imgur.com/%@%@.%@",imageData[@"id"],size, type];
+    NSLog(@"imageDataURL %@",link);
     return [self URLWithString:link];
 }
 +(NSURL*)urlFromLineImage:(LineImage*)lineImage size:(NSString *)size{
@@ -56,5 +57,45 @@ b, t ,b, m, h
  ups = 6416;
  views = 199933;
  vote = "<null>";
+ 
+ 
+ image json
+ animated = 1;
+ bandwidth = 80078322976;
+ datetime = 1372422503;
+ description = "<null>";
+ favorite = 0;
+ height = 210;
+ id = tUFpXpI;
+ link = "http://i.imgur.com/tUFpXpI.gif";
+ nsfw = "<null>";
+ section = "<null>";
+ size = 1704592;
+ title = "<null>";
+ type = "image/gif";
+ views = 46978;
+ width = 245;
+ 
+ 
+ gallery/hot/viral
+ "account_url" = amandil;
+ cover = OojBAqT;
+ datetime = 1372601215;
+ description = "<null>";
+ downs = 28;
+ favorite = 0;
+ id = 0VOrz;
+ "is_album" = 1;
+ layout = blog;
+ link = "http://imgur.com/a/0VOrz";
+ nsfw = 0;
+ privacy = public;
+ score = 3569;
+ section = "<null>";
+ title = "I think Vladamir Kush deserves imgurian recognition";
+ ups = 3597;
+ views = 1650;
+ vote = "<null>";
+
  */
 @end

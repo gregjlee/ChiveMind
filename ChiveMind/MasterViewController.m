@@ -13,6 +13,7 @@
 #import "GLImgurClient.h"
 #import "GalleryViewCell.h"
 #import "NSURL+imgur.h"
+#import "SVPullToRefresh.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -41,11 +42,19 @@
     fetchRequest.fetchLimit = 20;
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[(id)[[UIApplication sharedApplication] delegate] managedObjectContext] sectionNameKeyPath:nil cacheName:@"GlobalStream"];
     _fetchedResultsController.delegate = self;
-    [self refetchData];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refetchData)];
-    [GLImgurClient getEndPoint:@"image/nFlnmH1"];
+    __weak MasterViewController *weakSelf=self;
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [weakSelf refetchData];
+    }];
     
+    
+    // setup infinite scrolling
+//    [GLImgurClient getEndPoint:@"gallery/album/xm3jI"];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [self.tableView triggerPullToRefresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,20 +108,22 @@
     cell.titleLabel.text = lineImage.title;
     cell.detailLabel.text=lineImage.section;
     cell.scoreLabel.text=[NSString stringWithFormat:@"%d pts", [lineImage.score integerValue]];
-    UIImage *placeHolderImage=[UIImage imageNamed:@"albumPlaceHolder.jpeg"];
+    UIImage *placeHolderImage=[UIImage imageNamed:@"placeHolder.gif"];
+    cell.countLabel.hidden=YES;
     if ([lineImage.isAlbum boolValue]) {
-        cell.countLabel.text=[NSString stringWithFormat:@"%d picts", [lineImage.count integerValue]];
-        [GLImgurClient getImageWithId:lineImage.coverID block:^(NSArray *results) {
-            NSLog(@"cover results %@",results);
-            NSDictionary *imageData = (NSDictionary *)results;
-            [cell.imageView setImageWithURL: [NSURL urlWithImageData:imageData size:@"s"] placeholderImage:placeHolderImage];
+        cell.imageView.image=placeHolderImage;
+        [GLImgurClient getAlbumCoverWithLineImage:lineImage block:^(NSArray *records) {
+            cell.countLabel.hidden=NO;
+            NSDictionary *albumData=(NSDictionary *)records;
+            cell.countLabel.text=[NSString stringWithFormat:@"%@ picts",albumData[@"images_count"]];
+            NSArray *images = albumData[@"images"];
+            NSLog(@"album loaded");
+            [cell.imageView setImageWithURL: [NSURL urlWithImageData:images[0] size:@"s"] placeholderImage:placeHolderImage];
         }];
     }
     else{
-        cell.countLabel.hidden=YES;
         [cell.imageView setImageWithURL: [NSURL urlFromLineImage:lineImage size:@"s"] placeholderImage:placeHolderImage];
     }
-    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -170,10 +181,13 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView reloadData];
+    __weak MasterViewController *weakSelf=self;
+    [weakSelf.tableView.pullToRefreshView stopAnimating];
+
 }
 
 /*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
+// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
  
  - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {

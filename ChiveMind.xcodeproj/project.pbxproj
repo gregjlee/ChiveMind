@@ -39,6 +39,9 @@
 		C11E493B177D7FDA009BFD66 /* TTTStringTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E4937177D7FDA009BFD66 /* TTTStringTransformers.m */; };
 		C11E494C177D822D009BFD66 /* GLImgurClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E494B177D822D009BFD66 /* GLImgurClient.m */; };
 		C11E4958177D90F8009BFD66 /* ChiveMindIncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C11E4957177D90F8009BFD66 /* ChiveMindIncrementalStore.m */; };
+		C140669B17821A0800D2299C /* placeHolder.gif in Resources */ = {isa = PBXBuildFile; fileRef = C140669A17821A0800D2299C /* placeHolder.gif */; };
+		C14066A2178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = C140669F178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m */; };
+		C14066A3178233E000D2299C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = C14066A1178233E000D2299C /* UIScrollView+SVPullToRefresh.m */; };
 		C145BB25177E3A7B00E77372 /* GalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB24177E3A7B00E77372 /* GalleryViewCell.m */; };
 		C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C145BB26177E3B0600E77372 /* GalleryViewCell.xib */; };
 		C145BB2D177E42A800E77372 /* LineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB2C177E42A800E77372 /* LineImage.m */; };
@@ -126,6 +129,12 @@
 		C11E494B177D822D009BFD66 /* GLImgurClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLImgurClient.m; sourceTree = "<group>"; };
 		C11E4956177D90F8009BFD66 /* ChiveMindIncrementalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChiveMindIncrementalStore.h; sourceTree = "<group>"; };
 		C11E4957177D90F8009BFD66 /* ChiveMindIncrementalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChiveMindIncrementalStore.m; sourceTree = "<group>"; };
+		C140669A17821A0800D2299C /* placeHolder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeHolder.gif; sourceTree = "<group>"; };
+		C140669D178233E000D2299C /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		C140669E178233E000D2299C /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		C140669F178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		C14066A0178233E000D2299C /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		C14066A1178233E000D2299C /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		C145BB23177E3A7B00E77372 /* GalleryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewCell.h; sourceTree = "<group>"; };
 		C145BB24177E3A7B00E77372 /* GalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewCell.m; sourceTree = "<group>"; };
 		C145BB26177E3B0600E77372 /* GalleryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewCell.xib; sourceTree = "<group>"; };
@@ -247,6 +256,7 @@
 		C11E48E5177D7DD1009BFD66 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C140669A17821A0800D2299C /* placeHolder.gif */,
 				C145BB2E177E642900E77372 /* albumPlaceHolder.jpeg */,
 				C11E48E6177D7DD1009BFD66 /* ChiveMind-Info.plist */,
 				C11E48E7177D7DD1009BFD66 /* InfoPlist.strings */,
@@ -315,6 +325,7 @@
 		C11E4953177D8FE8009BFD66 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				C140669C178233E000D2299C /* SVPullToRefresh */,
 				C1F69EA8177E2733007E64A7 /* InflectorKit */,
 				C1F69E62177DF2FA007E64A7 /* PSTCollectionView */,
 				C11E492E177D7FDA009BFD66 /* TransformerKit */,
@@ -347,6 +358,18 @@
 				C1F69EA4177E1FB4007E64A7 /* ImageViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C140669C178233E000D2299C /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				C140669D178233E000D2299C /* SVPullToRefresh.h */,
+				C140669E178233E000D2299C /* UIScrollView+SVInfiniteScrolling.h */,
+				C140669F178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m */,
+				C14066A0178233E000D2299C /* UIScrollView+SVPullToRefresh.h */,
+				C14066A1178233E000D2299C /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 		C1F69E62177DF2FA007E64A7 /* PSTCollectionView */ = {
@@ -474,6 +497,7 @@
 				C1F69EA7177E1FB4007E64A7 /* ImageViewController.xib in Resources */,
 				C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */,
 				C145BB2F177E642900E77372 /* albumPlaceHolder.jpeg in Resources */,
+				C140669B17821A0800D2299C /* placeHolder.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +552,8 @@
 				C1F69EAE177E2733007E64A7 /* TTTStringInflector.m in Sources */,
 				C145BB25177E3A7B00E77372 /* GalleryViewCell.m in Sources */,
 				C145BB2D177E42A800E77372 /* LineImage.m in Sources */,
+				C14066A2178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				C14066A3178233E000D2299C /* UIScrollView+SVPullToRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
