@@ -21,6 +21,7 @@ extern NSString * const kUserMediaRecentEndpoint;
 extern NSString * const kAuthenticationEndpoint;
 @class LineImage;
 @interface GLImgurClient : AFRESTClient <AFIncrementalStoreHTTPClient>
+@property(nonatomic,strong)NSString *selectedID;
 + (GLImgurClient *)sharedClient;
 - (id)initWithBaseURL:(NSURL *)url;
 + (void)getImageWithId:(NSString*)imageID
@@ -32,4 +33,5 @@ extern NSString * const kAuthenticationEndpoint;
 + (void)getEndPoint:(NSString *)endPoint;
 + (void)getAlbumCoverWithLineImage:(LineImage *)lineImage
                              block:(void (^)(NSArray *records))block;
++(void)getCommentsForLineImage:(LineImage *)lineImage block:(void (^)(NSArray *records))block;
 @end

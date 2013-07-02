@@ -43,19 +43,17 @@
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[(id)[[UIApplication sharedApplication] delegate] managedObjectContext] sectionNameKeyPath:nil cacheName:@"GlobalStream"];
     _fetchedResultsController.delegate = self;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refetchData)];
     __weak MasterViewController *weakSelf=self;
     [self.tableView addPullToRefreshWithActionHandler:^{
         [weakSelf refetchData];
     }];
+    [self.tableView triggerPullToRefresh];
     
     
     // setup infinite scrolling
 //    [GLImgurClient getEndPoint:@"gallery/album/xm3jI"];
 }
--(void)viewDidAppear:(BOOL)animated{
-    [self.tableView triggerPullToRefresh];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -117,12 +115,11 @@
             NSDictionary *albumData=(NSDictionary *)records;
             cell.countLabel.text=[NSString stringWithFormat:@"%@ picts",albumData[@"images_count"]];
             NSArray *images = albumData[@"images"];
-            NSLog(@"album loaded");
             [cell.imageView setImageWithURL: [NSURL urlWithImageData:images[0] size:@"s"] placeholderImage:placeHolderImage];
         }];
     }
     else{
-        [cell.imageView setImageWithURL: [NSURL urlFromLineImage:lineImage size:@"s"] placeholderImage:placeHolderImage];
+        [cell.imageView setImageWithURL: [NSURL urlWithLineImage:lineImage size:@"s"] placeholderImage:placeHolderImage];
     }
 }
 
@@ -168,7 +165,7 @@
         if (!self.detailViewController) {
             self.detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
         }
-        
+        [[GLImgurClient sharedClient]setSelectedID:lineImage.lineID];
         self.detailViewController.lineImage = lineImage;
         [self.navigationController pushViewController:self.detailViewController animated:YES];
     }
@@ -184,6 +181,9 @@
     __weak MasterViewController *weakSelf=self;
     [weakSelf.tableView.pullToRefreshView stopAnimating];
 
+}
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+   
 }
 
 /*

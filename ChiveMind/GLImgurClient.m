@@ -67,11 +67,19 @@ NSString * const kAuthenticationEndpoint =
 - (NSURLRequest *)requestForFetchRequest:(NSFetchRequest *)fetchRequest
                              withContext:(NSManagedObjectContext *)context
 {
+    NSLog(@"imgurclient request for fetch");
     NSMutableURLRequest *mutableURLRequest = nil;
     if ([fetchRequest.entityName isEqualToString:@"LineImage"]) {
-        mutableURLRequest = [self requestWithMethod:@"GET" path:@"gallery/hot/viral/0" parameters:nil];
+        mutableURLRequest = [self requestWithMethod:@"GET" path:@"gallery/hot/time/0" parameters:nil];
         
     }
+    else{
+        if ([fetchRequest.entityName isEqualToString:@"Comment"]) {
+            mutableURLRequest = [self requestWithMethod:@"GET" path:[NSString stringWithFormat:@"gallery/image/%@/comments", self.selectedID]  parameters:nil];
+            
+        }
+    }
+    
     
     return mutableURLRequest;
 }
@@ -112,11 +120,13 @@ NSString * const kAuthenticationEndpoint =
         
         [mutablePropertyValues setValue:[representation valueForKey:@"section"] forKey:@"section"];
     }
-//    else if ([entity.name isEqualToString:@"User"]) {
-//        [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"id"] integerValue]] forKey:@"userID"];
-//        [mutablePropertyValues setValue:[representation valueForKey:@"username"] forKey:@"username"];
-//        [mutablePropertyValues setValue:[representation valueForKeyPath:@"avatar_image.url"] forKey:@"avatarImageURLString"];
-//    }
+    else if ([entity.name isEqualToString:@"Comment"]) {
+        [mutablePropertyValues setValue:[representation valueForKey:@"image_id"] forKey:@"imageID"];
+        [mutablePropertyValues setValue:[representation valueForKey:@"comment"] forKey:@"text"];
+        [mutablePropertyValues setValue:[representation valueForKey:@"author"] forKey:@"author"];
+        [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"datetime"] integerValue]] forKey:@"datetime"];
+        [mutablePropertyValues setValue:[NSNumber numberWithInteger:[[representation valueForKey:@"points"] integerValue]] forKey:@"points"];
+    }
     
     return mutablePropertyValues;
 }
@@ -154,6 +164,11 @@ NSString * const kAuthenticationEndpoint =
 + (void)getAlbumCoverWithLineImage:(LineImage *)lineImage
                  block:(void (^)(NSArray *records))block{
     NSString *imageEndPoint = [NSString stringWithFormat:@"album/%@/image/%@",lineImage.lineID,lineImage.coverID];
+    [self getEndPoint:imageEndPoint block:block];
+}
+
++(void)getCommentsForLineImage:(LineImage *)lineImage block:(void (^)(NSArray *records))block{
+    NSString *imageEndPoint = [NSString stringWithFormat:@"gallery/image/%@/comments",lineImage.lineID];
     [self getEndPoint:imageEndPoint block:block];
 }
 

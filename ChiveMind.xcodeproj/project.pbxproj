@@ -42,6 +42,9 @@
 		C140669B17821A0800D2299C /* placeHolder.gif in Resources */ = {isa = PBXBuildFile; fileRef = C140669A17821A0800D2299C /* placeHolder.gif */; };
 		C14066A2178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = C140669F178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m */; };
 		C14066A3178233E000D2299C /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = C14066A1178233E000D2299C /* UIScrollView+SVPullToRefresh.m */; };
+		C14066A617823E0500D2299C /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = C14066A517823E0500D2299C /* Comment.m */; };
+		C14066A817824EF100D2299C /* CommentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C14066A717824EF100D2299C /* CommentViewCell.xib */; };
+		C14066AB17824F1500D2299C /* CommentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C14066AA17824F1500D2299C /* CommentViewCell.m */; };
 		C145BB25177E3A7B00E77372 /* GalleryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB24177E3A7B00E77372 /* GalleryViewCell.m */; };
 		C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C145BB26177E3B0600E77372 /* GalleryViewCell.xib */; };
 		C145BB2D177E42A800E77372 /* LineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C145BB2C177E42A800E77372 /* LineImage.m */; };
@@ -135,6 +138,11 @@
 		C140669F178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
 		C14066A0178233E000D2299C /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
 		C14066A1178233E000D2299C /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		C14066A417823E0500D2299C /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		C14066A517823E0500D2299C /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		C14066A717824EF100D2299C /* CommentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewCell.xib; sourceTree = "<group>"; };
+		C14066A917824F1500D2299C /* CommentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewCell.h; sourceTree = "<group>"; };
+		C14066AA17824F1500D2299C /* CommentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewCell.m; sourceTree = "<group>"; };
 		C145BB23177E3A7B00E77372 /* GalleryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewCell.h; sourceTree = "<group>"; };
 		C145BB24177E3A7B00E77372 /* GalleryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewCell.m; sourceTree = "<group>"; };
 		C145BB26177E3B0600E77372 /* GalleryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewCell.xib; sourceTree = "<group>"; };
@@ -339,6 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				C11E48F6177D7DD1009BFD66 /* ChiveMind.xcdatamodeld */,
+				C14066A417823E0500D2299C /* Comment.h */,
+				C14066A517823E0500D2299C /* Comment.m */,
 				C145BB2B177E42A800E77372 /* LineImage.h */,
 				C145BB2C177E42A800E77372 /* LineImage.m */,
 			);
@@ -421,6 +431,9 @@
 				C145BB23177E3A7B00E77372 /* GalleryViewCell.h */,
 				C145BB24177E3A7B00E77372 /* GalleryViewCell.m */,
 				C145BB26177E3B0600E77372 /* GalleryViewCell.xib */,
+				C14066A717824EF100D2299C /* CommentViewCell.xib */,
+				C14066A917824F1500D2299C /* CommentViewCell.h */,
+				C14066AA17824F1500D2299C /* CommentViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -498,6 +511,7 @@
 				C145BB27177E3B0600E77372 /* GalleryViewCell.xib in Resources */,
 				C145BB2F177E642900E77372 /* albumPlaceHolder.jpeg in Resources */,
 				C140669B17821A0800D2299C /* placeHolder.gif in Resources */,
+				C14066A817824EF100D2299C /* CommentViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +568,8 @@
 				C145BB2D177E42A800E77372 /* LineImage.m in Sources */,
 				C14066A2178233E000D2299C /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				C14066A3178233E000D2299C /* UIScrollView+SVPullToRefresh.m in Sources */,
+				C14066A617823E0500D2299C /* Comment.m in Sources */,
+				C14066AB17824F1500D2299C /* CommentViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

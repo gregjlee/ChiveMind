@@ -17,10 +17,12 @@
     NSArray* split = [imageData[@"link"] componentsSeparatedByString: @"."];
     NSString *type = [split lastObject];
     NSString *link=[NSString stringWithFormat:@"http://i.imgur.com/%@%@.%@",imageData[@"id"],size, type];
-    NSLog(@"imageDataURL %@",link);
     return [self URLWithString:link];
 }
-+(NSURL*)urlFromLineImage:(LineImage*)lineImage size:(NSString *)size{
++(NSURL*)urlWithLineImage:(LineImage*)lineImage size:(NSString *)size{
+    if (!size) {
+        size=@"";
+    }
     if ([lineImage.isAlbum boolValue]) {
         
         return nil;

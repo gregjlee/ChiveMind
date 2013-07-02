@@ -10,5 +10,5 @@
 @class LineImage;
 @interface NSURL (imgur)
 +(NSURL*)urlWithImageData:(NSDictionary *)imageData size:(NSString *)size;
-+(NSURL*)urlFromLineImage:(LineImage*)lineImage size:(NSString *)size;
++(NSURL*)urlWithLineImage:(LineImage*)lineImage size:(NSString *)size;
 @end
