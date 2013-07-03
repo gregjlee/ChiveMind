@@ -11,6 +11,7 @@
 #import "GLImgurClient.h"
 #import "NSURL+imgur.h"
 #import "ImageViewController.h"
+
 #define CellIdentifier @"cell"
 @interface AlbumViewController ()
 
@@ -67,10 +68,7 @@
     [cell setBackgroundColor:[UIColor whiteColor]];
     NSDictionary *imageData=_imagesData[indexPath.row];
     [cell configureCellWithImageURL:[NSURL urlWithImageData:imageData size:@"t"]];
-//    ALAsset *asset=self.images[indexPath.row];
-//    [cell configureImage:[UIImage imageWithCGImage:asset.thumbnail]];
-    // load the image for this cell
-    
+
     return cell;
 }
 
@@ -96,16 +94,30 @@
 }
 
 -(void)collectionView:(PSUICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    ImageViewController *imageVC = [[ImageViewController alloc]initWithNibName:@"ImageViewController" bundle:nil];
-    imageVC.imagesData=_imagesData;
-    imageVC.selectedIndex=indexPath.row;
-    [self.navigationController pushViewController:imageVC animated:YES];
-//    PhotoViewController *photoController=[[PhotoViewController alloc]initWithNibName:@"PhotoViewController" bundle:nil];
-//    photoController.images=self.images;
-//    photoController.selectedIndex=indexPath.row;
-//    [self.navigationController pushViewController:photoController animated:YES];
+    
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = YES;
+    [browser setInitialPageIndex:indexPath.row];
+    [self.navigationController pushViewController:browser animated:YES];
+
+}
+#pragma mark - MWPhotoBrowserDelegate
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+    return _imagesData.count;
 }
 
+- (MWPhoto *)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
+    if (index < _imagesData.count)
+        return [MWPhoto photoWithURL:[NSURL urlWithImageData:_imagesData[index] size:nil]];
+    return nil;
+    
+}
+//- (MWCaptionView *)photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index {
+//    MWPhoto *photo = [self.photos objectAtIndex:index];
+//    MWCaptionView *captionView = [[MWCaptionView alloc] initWithPhoto:photo];
+//    return [captionView autorelease];
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PSTCollectionView.h"
 #import "LineImage.h"
-@interface AlbumViewController : UIViewController <PSTCollectionViewDelegateFlowLayout,PSTCollectionViewDataSource>
+#import "MWPhotoBrowser.h"
+@interface AlbumViewController : UIViewController <PSTCollectionViewDelegateFlowLayout,PSTCollectionViewDataSource, MWPhotoBrowserDelegate>
 @property (nonatomic,strong)PSTCollectionView *collectionView;
 @property (nonatomic,strong)LineImage *lineImage;
 @property (nonatomic,strong)NSArray *imagesData;
